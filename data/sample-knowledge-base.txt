@@ -1,0 +1,6 @@
+This is a sample corpus for a portfolio demonstration.
+Manahil Iftikhar’s internship portfolio covers Python, data exploration, regression, classification, natural language processing, and language-model experiments.
+The foundation collection contains six tasks. The advanced collection contains five tasks.
+The customer churn demonstration uses generated synthetic data. Its results are not an external Telco benchmark.
+Maintained notebooks can be opened in VS Code. Data and model downloads are documented per project.
+The document assistant retrieves passages and displays them with generated responses for inspection.

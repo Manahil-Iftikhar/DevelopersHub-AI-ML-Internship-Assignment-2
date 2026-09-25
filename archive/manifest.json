@@ -1,0 +1,25 @@
+{
+  "original_commit": "8fa5cff63746de4ba79e7408b36123c131c3c220",
+  "files": [
+    {
+      "path": "archive/Task 1_ News Topic Classifier Using BERT",
+      "git_blob_sha": "7411667ae61d49c50d2bb69524ae68e9cff09d11"
+    },
+    {
+      "path": "archive/Task 2_ End-to-End ML Pipeline with Scikit-learn Pipeline API",
+      "git_blob_sha": "9fe6d35e83df4cc61ac8ec5556699b41ea70ebd9"
+    },
+    {
+      "path": "archive/Task 3_ Multimodal ML \u2013 Housing Price Prediction Using Images + Tabular Data",
+      "git_blob_sha": "955572d42781c5acc743a7c9cb04a97ddc38d94d"
+    },
+    {
+      "path": "archive/Task 4_ Context-Aware Chatbot Using LangChain or RAG",
+      "git_blob_sha": "bdc51af231daa59777de0b5613c1a45e3f321910"
+    },
+    {
+      "path": "archive/Task 5_ Auto Tagging Support Tickets Using LLM",
+      "git_blob_sha": "714d9871449fdc1cfd5dbd5e7d0d80b81ac607cf"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+-r requirements-llm.txt
+datasets==4.1.0
+evaluate==0.4.5
+gradio==5.46.0

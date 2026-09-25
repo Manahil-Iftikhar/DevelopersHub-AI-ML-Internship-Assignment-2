@@ -1,0 +1,47 @@
+[
+  {
+    "task": 1,
+    "title": "BERT news classification",
+    "assignment_title": "News Topic Classifier Using BERT",
+    "status": "Training code present; completed evaluation not in the archive",
+    "notebook": "notebooks/01-bert-news.ipynb",
+    "case_study": "docs/projects/01-bert-news.md",
+    "original": "archive/Task 1_ News Topic Classifier Using BERT"
+  },
+  {
+    "task": 2,
+    "title": "Customer churn pipeline",
+    "assignment_title": "End-to-End ML Pipeline with Scikit-learn Pipeline API",
+    "status": "Runs offline on explicitly synthetic data",
+    "notebook": "notebooks/02-churn-pipeline.ipynb",
+    "case_study": "docs/projects/02-churn-pipeline.md",
+    "original": "archive/Task 2_ End-to-End ML Pipeline with Scikit-learn Pipeline API"
+  },
+  {
+    "task": 3,
+    "title": "Housing: tabular baseline",
+    "assignment_title": "Multimodal ML – Housing Price Prediction Using Images + Tabular Data",
+    "status": "CSV required; paired image branch not implemented",
+    "notebook": "notebooks/03-housing-baseline.ipynb",
+    "case_study": "docs/projects/03-housing-baseline.md",
+    "original": "archive/Task 3_ Multimodal ML – Housing Price Prediction Using Images + Tabular Data"
+  },
+  {
+    "task": 4,
+    "title": "Document assistant",
+    "assignment_title": "Context-Aware Chatbot Using LangChain or RAG",
+    "status": "Local app included; model-backed execution requires downloads",
+    "notebook": "notebooks/04-context-assistant.ipynb",
+    "case_study": "docs/projects/04-context-assistant.md",
+    "original": "archive/Task 4_ Context-Aware Chatbot Using LangChain or RAG"
+  },
+  {
+    "task": 5,
+    "title": "Support ticket tagging",
+    "assignment_title": "Auto Tagging Support Tickets Using LLM",
+    "status": "Prompt/parser checks pass offline; model quality not established",
+    "notebook": "notebooks/05-ticket-tagging.ipynb",
+    "case_study": "docs/projects/05-ticket-tagging.md",
+    "original": "archive/Task 5_ Auto Tagging Support Tickets Using LLM"
+  }
+]

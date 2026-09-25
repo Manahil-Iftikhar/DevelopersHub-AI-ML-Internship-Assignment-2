@@ -1,0 +1,263 @@
+{
+  "task": "classification",
+  "target": "Churn",
+  "seed": 42,
+  "rows": {
+    "train": 4225,
+    "validation": 1409,
+    "test": 1409
+  },
+  "rows_removed_before_split": 0,
+  "selection_metric": "roc_auc",
+  "selected_on": "validation",
+  "selected_model": "random_forest",
+  "validation": {
+    "baseline": {
+      "accuracy": 0.5443577004968062,
+      "f1": 0.0,
+      "roc_auc": 0.5,
+      "confusion_matrix": [
+        [
+          767,
+          0
+        ],
+        [
+          642,
+          0
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.5443577004968062,
+          "recall": 1.0,
+          "f1-score": 0.7049632352941176,
+          "support": 767.0
+        },
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 642.0
+        },
+        "accuracy": 0.5443577004968062,
+        "macro avg": {
+          "precision": 0.2721788502484031,
+          "recall": 0.5,
+          "f1-score": 0.3524816176470588,
+          "support": 1409.0
+        },
+        "weighted avg": {
+          "precision": 0.2963253060901706,
+          "recall": 0.5443577004968062,
+          "f1-score": 0.3837521656994948,
+          "support": 1409.0
+        }
+      }
+    },
+    "logistic_regression": {
+      "accuracy": 0.6643009226401704,
+      "f1": 0.608119304059652,
+      "roc_auc": 0.7171749787780201,
+      "confusion_matrix": [
+        [
+          569,
+          198
+        ],
+        [
+          275,
+          367
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.6741706161137441,
+          "recall": 0.741851368970013,
+          "f1-score": 0.7063935443823712,
+          "support": 767.0
+        },
+        "1": {
+          "precision": 0.6495575221238938,
+          "recall": 0.5716510903426791,
+          "f1-score": 0.608119304059652,
+          "support": 642.0
+        },
+        "accuracy": 0.6643009226401704,
+        "macro avg": {
+          "precision": 0.6618640691188189,
+          "recall": 0.656751229656346,
+          "f1-score": 0.6572564242210116,
+          "support": 1409.0
+        },
+        "weighted avg": {
+          "precision": 0.6629558493703204,
+          "recall": 0.6643009226401704,
+          "f1-score": 0.661615643539798,
+          "support": 1409.0
+        }
+      }
+    },
+    "random_forest": {
+      "accuracy": 0.6628814762242725,
+      "f1": 0.6058091286307054,
+      "roc_auc": 0.7238248709419309,
+      "confusion_matrix": [
+        [
+          569,
+          198
+        ],
+        [
+          277,
+          365
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.6725768321513003,
+          "recall": 0.741851368970013,
+          "f1-score": 0.7055176689398636,
+          "support": 767.0
+        },
+        "1": {
+          "precision": 0.6483126110124334,
+          "recall": 0.5685358255451713,
+          "f1-score": 0.6058091286307054,
+          "support": 642.0
+        },
+        "accuracy": 0.6628814762242725,
+        "macro avg": {
+          "precision": 0.6604447215818668,
+          "recall": 0.6551935972575922,
+          "f1-score": 0.6556633987852845,
+          "support": 1409.0
+        },
+        "weighted avg": {
+          "precision": 0.661521026635933,
+          "recall": 0.6628814762242725,
+          "f1-score": 0.6600862403532918,
+          "support": 1409.0
+        }
+      }
+    }
+  },
+  "test": {
+    "selected_model": {
+      "accuracy": 0.6628814762242725,
+      "f1": 0.6122448979591837,
+      "roc_auc": 0.7186016238368527,
+      "confusion_matrix": [
+        [
+          559,
+          208
+        ],
+        [
+          267,
+          375
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.6767554479418886,
+          "recall": 0.7288135593220338,
+          "f1-score": 0.7018204645323289,
+          "support": 767.0
+        },
+        "1": {
+          "precision": 0.6432246998284734,
+          "recall": 0.5841121495327103,
+          "f1-score": 0.6122448979591837,
+          "support": 642.0
+        },
+        "accuracy": 0.6628814762242725,
+        "macro avg": {
+          "precision": 0.6599900738851809,
+          "recall": 0.6564628544273721,
+          "f1-score": 0.6570326812457563,
+          "support": 1409.0
+        },
+        "weighted avg": {
+          "precision": 0.6614774207674298,
+          "recall": 0.6628814762242725,
+          "f1-score": 0.6610060473996396,
+          "support": 1409.0
+        }
+      }
+    },
+    "baseline": {
+      "accuracy": 0.5443577004968062,
+      "f1": 0.0,
+      "roc_auc": 0.5,
+      "confusion_matrix": [
+        [
+          767,
+          0
+        ],
+        [
+          642,
+          0
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.5443577004968062,
+          "recall": 1.0,
+          "f1-score": 0.7049632352941176,
+          "support": 767.0
+        },
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 642.0
+        },
+        "accuracy": 0.5443577004968062,
+        "macro avg": {
+          "precision": 0.2721788502484031,
+          "recall": 0.5,
+          "f1-score": 0.3524816176470588,
+          "support": 1409.0
+        },
+        "weighted avg": {
+          "precision": 0.2963253060901706,
+          "recall": 0.5443577004968062,
+          "f1-score": 0.3837521656994948,
+          "support": 1409.0
+        }
+      }
+    }
+  },
+  "feature_columns": [
+    "gender",
+    "SeniorCitizen",
+    "Partner",
+    "Dependents",
+    "tenure",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod",
+    "MonthlyCharges",
+    "TotalCharges"
+  ],
+  "limitations": "Random holdout; use grouped or temporal splits for related records or time-dependent deployment.",
+  "dataset": {
+    "filename": "synthetic-churn.csv",
+    "kind": "synthetic",
+    "sha256": "4804d8b51434d1d04122e6464924f3a9ee1312028affe6904fedb3215165800b"
+  },
+  "environment": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3"
+  },
+  "verified_on": "2026-09-24",
+  "python_version": "3.12.14"
+}
