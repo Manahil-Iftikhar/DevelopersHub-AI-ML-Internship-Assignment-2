@@ -2,6 +2,8 @@
 
 # Advanced experiments · AI/ML internship portfolio
 
+[![Portfolio checks](https://github.com/Manahil-Iftikhar/DevelopersHub-AI-ML-Internship-Assignment-2/actions/workflows/checks.yml/badge.svg?branch=main)](https://github.com/Manahil-Iftikhar/DevelopersHub-AI-ML-Internship-Assignment-2/actions/workflows/checks.yml)
+
 **Manahil Iftikhar** · Python · Machine learning · Applied AI
 
 A collection of 5 projects originating from my 2025 DevelopersHub Corporation internship. This maintained portfolio edition adds readable project guides, local VS Code workflows, reusable Python components, and checks that make the work easier to inspect and reproduce.
@@ -23,6 +25,12 @@ Each project page explains the problem, data, current implementation, recorded e
 | 3 | [Housing: tabular baseline](docs/projects/03-housing-baseline.md) | Ames-style housing regression; multimodal extension pending | CSV required; paired image branch not implemented |
 | 4 | [Document assistant](docs/projects/04-context-assistant.md) | Retrieval, source inspection, and conversation state | Local app included; model-backed execution requires downloads |
 | 5 | [Support ticket tagging](docs/projects/05-ticket-tagging.md) | Zero-shot/few-shot prompts and controlled labels | Prompt/parser checks pass offline; model quality not established |
+
+## Verification at a glance
+
+- **Hosted checks passed:** [GitHub Actions run 36143914094](https://github.com/Manahil-Iftikhar/DevelopersHub-AI-ML-Internship-Assignment-2/actions/runs/36143914094) verified repository structure, notebook files, local links, original-source integrity, and focused offline tests on September 25, 2026.
+- **Measured experiment:** the synthetic-churn report below records a separate local training and evaluation run.
+- **Scope:** offline CI does not measure BERT, retrieval, or ticket-tagging model quality, and does not validate the missing housing image branch. See the [verification record](docs/VERIFICATION.md) for exact execution limits.
 
 ## A recorded experiment
 

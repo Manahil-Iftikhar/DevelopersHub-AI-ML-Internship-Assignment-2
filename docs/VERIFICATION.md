@@ -42,4 +42,11 @@ python tools/render_metrics.py
 
 The BERT, document-assistant, and ticket-tagging model dependencies and weights were not installed or executed during this maintenance. The Streamlit app and model notebooks were checked for syntax, with offline behavior tests for their reusable utilities. Their full runtime compatibility, output quality, latency, and resource use require model-backed runs. The housing CSV was absent and its image branch is not implemented.
 
-The GitHub Actions workflow runs the offline checks above when GitHub enables it. Local success does not by itself establish a successful hosted CI run. Historical outputs are documented separately in the project guides.
+Historical outputs are documented separately in the project guides.
+
+## Hosted CI evidence
+
+[GitHub Actions run 36143914094](https://github.com/Manahil-Iftikhar/DevelopersHub-AI-ML-Internship-Assignment-2/actions/runs/36143914094) completed successfully on **September 25, 2026**, for commit `d67c1ac9240ef68f88ed3a6a2fa75e19aef6c2e1`. The workflow used Python 3.12 and installed the pinned core requirements. Both repository validation and focused offline test steps passed.
+
+The [workflow](../.github/workflows/checks.yml) runs `python tools/check_workspace.py` and `python -m unittest discover -s tests -v` on pushes and pull requests. It does not execute the churn training CLI, the complete model-backed notebooks, or the Streamlit application. The local experiment results above are separate evidence, not outputs of this CI run.
+
