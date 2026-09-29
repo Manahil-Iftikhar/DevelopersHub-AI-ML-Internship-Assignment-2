@@ -38,6 +38,8 @@ Each project page explains the problem, data, current implementation, recorded e
 
 On the seeded **synthetic** dataset, the selected random forest achieved test ROC-AUC **0.7186**, versus **0.5000** for the majority baseline. The model was selected on separate validation data. Read the [experiment record](docs/VERIFICATION.md) and [full metrics](reports/synthetic-churn.json) for the split, environment, and limitations.
 
+The [five-seed sensitivity study](docs/projects/02-churn-pipeline.md#five-seed-sensitivity-study--2026-09-29) repeats selection on one fixed synthetic dataset: mean test ROC-AUC **0.7352**, range **0.7186–0.7492**. Validation chose logistic regression in four runs and random forest in one. Overlapping holdouts make this a descriptive stability check, not independent external validation.
+
 ## A model-backed diagnostic result
 
 The [ticket-tagging evaluation](docs/projects/05-ticket-tagging.md) ran a pinned FLAN-T5-small checkpoint on 15 declared synthetic tickets. Zero-shot and few-shot each matched **3 of 15** reference answers, no better than a constant-label baseline. Raw outputs, timing, model revision and scoring rules are published. These results expose limitations rather than establish production tagging quality.

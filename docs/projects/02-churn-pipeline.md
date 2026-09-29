@@ -40,3 +40,35 @@ Follow the [VS Code setup](../SETUP.md), open the maintained notebook, and selec
 - Does the evaluation split represent the intended use?
 - Which errors remain, and what evidence explains them?
 - Can another person reproduce the result from the documented data and settings?
+
+## Five-seed sensitivity study · 2026-09-29
+
+A second experiment holds the generated dataset fixed (7,043 rows; generator seed 42) and repeats the unchanged workflow with seeds **7, 21, 42, 84, 123**, chosen before execution. Each seed controls both holdout assignment and stochastic estimator initialization. This measures their combined sensitivity, not split variation alone.
+
+Every run uses 4,225 training, 1,409 validation and 1,409 test rows. The same candidate pipelines compete on validation ROC-AUC; the winner is refitted on training plus validation before evaluating that run's test split. No best seed was selected and no hyperparameters were changed after inspecting the results.
+
+| Seed | Validation-selected model | Test ROC-AUC | Test F1 | Test accuracy |
+| --- | --- | ---: | ---: | ---: |
+| 7 | logistic regression | 0.7366 | 0.6538 | 0.6820 |
+| 21 | logistic regression | 0.7309 | 0.6278 | 0.6600 |
+| 42 | random forest | 0.7186 | 0.6122 | 0.6629 |
+| 84 | logistic regression | 0.7407 | 0.6481 | 0.6778 |
+| 123 | logistic regression | 0.7492 | 0.6535 | 0.6891 |
+
+Mean test ROC-AUC was **0.7352**, with sample standard deviation **0.0114** and range **0.7186–0.7492**. The prior baseline scored **0.5000** in every run. Logistic regression won validation selection four times and random forest once, showing that a single selected model is not a stable conclusion. The seed-42 result reproduces the earlier report rather than replacing it with the best score.
+
+[Full metrics and validation results](../../reports/churn-stability/metrics.json) · [All test predictions](../../reports/churn-stability/predictions.csv) · [Runner](../../portfolio/churn_stability.py)
+
+### Reproduce the study
+
+Install the core requirements, then run from the repository root:
+
+```bash
+python -m portfolio.churn_stability --output artifacts/churn-stability
+```
+
+The runner regenerates the fixed data, records its CSV hash and environment, and exports metrics plus predictions identified by seed and original row index. It reuses the maintained tabular pipeline; no separate model implementation is introduced.
+
+### Limits
+
+The five test sets overlap and come from one synthetic dataset. These results are correlated; the reported sample standard deviation is descriptive, **not a confidence interval**. They do not measure robustness to a new population, external customers, altered generation assumptions, or future time periods. Future tuning needs fresh held-out evidence; these five results should not become a test set repeatedly optimized against. CI checks source and existing tests, but does not rerun this training study.

@@ -68,3 +68,9 @@ All **22 offline tests** and the repository validator passed locally, including 
 Portfolio CI now runs `python -m portfolio.retrieval_eval --check`. It recomputes the lexical baseline and verifies the corpus SHA-256, settings, question labels, ranked sources/passages, similarities and aggregate metrics against the committed report. It does not overwrite that report. Numerical comparisons allow relative tolerance 1e-9 and absolute tolerance 1e-12; historical environment metadata is retained rather than required to match the current runner.
 
 A mismatch fails CI. To intentionally update the experiment, run the CLI without `--check`, inspect changed results and limitations, and commit the dataset/code/report changes together. This gate detects stale evidence; it does not establish retrieval quality or run embedding/generation models.
+
+## Churn sensitivity study · September 29, 2026
+
+Executed five complete training/validation/test runs with predeclared seeds 7, 21, 42, 84 and 123 on the same seed-42 synthetic dataset. [The case study](projects/02-churn-pipeline.md#five-seed-sensitivity-study--2026-09-29) records every selected model and score. Mean test ROC-AUC was 0.7352 (sample standard deviation 0.0114); baseline ROC-AUC was 0.5000 in each run.
+
+Independently recalculated AUC, accuracy and F1 from all 7,045 exported prediction rows and matched the recorded per-run metrics. Each run contains 1,409 unique test row indices; rows can recur across seeds. Source implementations of the generator and training pipeline matched the repository revision used for this study. This is a separate local experiment; hosted CI does not retrain it.
