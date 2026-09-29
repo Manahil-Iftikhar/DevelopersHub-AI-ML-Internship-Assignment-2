@@ -23,7 +23,7 @@ Each project page explains the problem, data, current implementation, recorded e
 | 1 | [BERT news classification](docs/projects/01-bert-news.md) | Transformer training, text classification, and evaluation | Training code present; completed evaluation not in the archive |
 | 2 | [Customer churn pipeline](docs/projects/02-churn-pipeline.md) | Reusable preprocessing, model selection, and serialization | Runs offline on explicitly synthetic data |
 | 3 | [Housing: tabular baseline](docs/projects/03-housing-baseline.md) | Ames-style housing regression; multimodal extension pending | CSV required; paired image branch not implemented |
-| 4 | [Document assistant](docs/projects/04-context-assistant.md) | Retrieval, source inspection, and conversation state | Local app included; model-backed execution requires downloads |
+| 4 | [Document assistant](docs/projects/04-context-assistant.md) | Retrieval, source inspection, and conversation state | Offline retrieval baseline recorded; embedding and generation evaluation pending |
 | 5 | [Support ticket tagging](docs/projects/05-ticket-tagging.md) | Zero-shot/few-shot prompts and controlled labels | CPU diagnostic run recorded; no improvement over constant baseline |
 
 ## Verification at a glance
@@ -41,6 +41,10 @@ On the seeded **synthetic** dataset, the selected random forest achieved test RO
 ## A model-backed diagnostic result
 
 The [ticket-tagging evaluation](docs/projects/05-ticket-tagging.md) ran a pinned FLAN-T5-small checkpoint on 15 declared synthetic tickets. Zero-shot and few-shot each matched **3 of 15** reference answers, no better than a constant-label baseline. Raw outputs, timing, model revision and scoring rules are published. These results expose limitations rather than establish production tagging quality.
+
+## Retrieval baseline and abstention limits
+
+The [document-assistant diagnostic](docs/projects/04-context-assistant.md#recorded-offline-retrieval-baseline) compares questions with an authored six-document corpus using TF-IDF and the assistant's existing splitter. It ranks the labelled source first for **8/8 answerable questions**, but incorrectly retrieves context for **3/4 unanswerable questions**. Full passages, scores, labels and reproduction commands are included. This is a small lexical baseline, not an embedding-model or generated-answer evaluation.
 
 ## Working in VS Code
 

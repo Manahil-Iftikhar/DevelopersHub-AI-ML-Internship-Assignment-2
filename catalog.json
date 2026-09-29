@@ -20,17 +20,17 @@
   {
     "task": 3,
     "title": "Housing: tabular baseline",
-    "assignment_title": "Multimodal ML \u2013 Housing Price Prediction Using Images + Tabular Data",
+    "assignment_title": "Multimodal ML – Housing Price Prediction Using Images + Tabular Data",
     "status": "CSV required; paired image branch not implemented",
     "notebook": "notebooks/03-housing-baseline.ipynb",
     "case_study": "docs/projects/03-housing-baseline.md",
-    "original": "archive/Task 3_ Multimodal ML \u2013 Housing Price Prediction Using Images + Tabular Data"
+    "original": "archive/Task 3_ Multimodal ML – Housing Price Prediction Using Images + Tabular Data"
   },
   {
     "task": 4,
     "title": "Document assistant",
     "assignment_title": "Context-Aware Chatbot Using LangChain or RAG",
-    "status": "Local app included; model-backed execution requires downloads",
+    "status": "Offline retrieval baseline recorded; embedding and generation evaluation pending",
     "notebook": "notebooks/04-context-assistant.ipynb",
     "case_study": "docs/projects/04-context-assistant.md",
     "original": "archive/Task 4_ Context-Aware Chatbot Using LangChain or RAG"
