@@ -1,0 +1,25 @@
+{
+  "description": "Authored portfolio diagnostic corpus and questions; not an independent benchmark. Labels fixed before the first baseline run.",
+  "documents": {
+    "foundations": "The AI/ML foundations portfolio contains six tasks: Iris exploration, stock forecasting, heart disease classification, general health prompting, mental health support inference, and house price regression. Maintained notebooks open in VS Code. Original submissions are preserved in an archive.",
+    "advanced": "The advanced portfolio contains five tasks: BERT news classification, customer churn, housing regression, a document assistant, and support ticket tagging. Housing currently needs a tabular CSV. The paired-image housing model is not implemented.",
+    "churn": "The customer churn experiment uses generated synthetic data with 7043 rows. It selects a model using validation ROC-AUC. The selected random forest achieved test ROC-AUC 0.7186 versus a majority baseline of 0.5000. These results do not measure real customer performance.",
+    "youtube": "The YouTube Metadata Explorer has a Django offline demo with fictional examples. The demo needs no API key; live YouTube search requires an owner-provided API key and quota. Its engagement experiment has a 12-row test set. Ridge regression underperformed the median baseline.",
+    "java": "The collaborative editing system is a Java 17 and Spring Boot local REST prototype. User, document, and version APIs require owner access where protected. H2 databases are temporary. A stale document revision returns HTTP 409. Missing revisions return 428. Snapshot revert creates a new snapshot and does not update current document content.",
+    "assistant": "The document assistant splits documents into overlapping chunks. It uses all-MiniLM-L6-v2 embeddings and FAISS similarity search. Retrieved passages are displayed as sources. FLAN-T5-small generates an unverified answer. The similarity cutoff is a heuristic; source display does not guarantee grounded answers. Previous user questions are concatenated with follow-up questions for retrieval."
+  },
+  "cases": [
+    {"id":"q01","question":"How many tasks are in the foundations portfolio?","relevant_sources":["foundations"]},
+    {"id":"q02","question":"Is the housing paired-image model implemented?","relevant_sources":["advanced"]},
+    {"id":"q03","question":"What test ROC-AUC did the churn random forest achieve?","relevant_sources":["churn"]},
+    {"id":"q04","question":"Can I try the YouTube demo without an API key?","relevant_sources":["youtube"]},
+    {"id":"q05","question":"Does snapshot revert replace current document content?","relevant_sources":["java"]},
+    {"id":"q06","question":"Which embeddings does the document assistant use?","relevant_sources":["assistant"]},
+    {"id":"q07","previous_question":"Tell me about the customer churn experiment","question":"Is its data real?","relevant_sources":["churn"]},
+    {"id":"q08","previous_question":"Tell me about the YouTube Metadata Explorer","question":"Did its model beat the baseline?","relevant_sources":["youtube"]},
+    {"id":"q09","question":"What is Manahil's telephone number?","relevant_sources":[]},
+    {"id":"q10","question":"What is the price of a YouTube API subscription in rupees?","relevant_sources":[]},
+    {"id":"q11","question":"What is the deployed document assistant website URL?","relevant_sources":[]},
+    {"id":"q12","question":"What was BERT's held-out classification accuracy?","relevant_sources":[]}
+  ]
+}

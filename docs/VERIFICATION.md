@@ -56,3 +56,9 @@ The [workflow](../.github/workflows/checks.yml) runs `python tools/check_workspa
 Ran the unchanged zero-shot and few-shot prompts on a declared 15-case synthetic diagnostic set using pinned FLAN-T5-small weights on CPU. Both modes scored exact match 0.20, equal to the constant-label baseline. [The case study](projects/05-ticket-tagging.md) links raw outputs, measured runtime, provenance and limitations. No prompt tuning was performed after observing the results.
 
 All 19 offline tests passed locally, including three new scoring tests. Core CI exercises those tests without downloading a model; it does not reproduce the inference run. The interactive ticket notebook uses the pinned model revision but was not executed in this evaluation environment; the measured run used the CLI.
+
+## Offline retrieval baseline · September 29, 2026
+
+Executed `python -m portfolio.retrieval_eval` on six authored corpus documents and 12 prelabelled questions. Source recall and mean reciprocal rank at three were 1.00 on eight answerable cases. Only one of four unanswerable cases abstained; three received context that did not contain their answer. The [case study](projects/04-context-assistant.md#recorded-offline-retrieval-baseline) explains these limits and links all retrieved passages and environment details.
+
+All **22 offline tests** and the repository validator passed locally, including three added tests for source-level scoring, false accepts, follow-up context, abstention, and invalid labels. This baseline does not execute embedding or generation models. Existing model-backed document-assistant execution remains pending.

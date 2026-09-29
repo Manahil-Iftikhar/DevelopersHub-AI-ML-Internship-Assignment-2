@@ -1,0 +1,220 @@
+{
+  "method": "TF-IDF unigram/bigram cosine; corpus-only vocabulary; stable chunk-order ties",
+  "k": 3,
+  "minimum_similarity": 0.15,
+  "threshold_selection": "0.15 declared before first run; not tuned or calibrated",
+  "chunking": {
+    "max_chars": 500,
+    "overlap": 80,
+    "chunks": 6
+  },
+  "metrics": {
+    "answerable_cases": 8,
+    "unanswerable_cases": 4,
+    "source_recall_at_k": 1.0,
+    "source_mrr_at_k": 1.0,
+    "unanswerable_abstention_rate": 0.25,
+    "unanswerable_false_accepts": 3
+  },
+  "outputs": [
+    {
+      "id": "q01",
+      "question": "How many tasks are in the foundations portfolio?",
+      "relevant_sources": [
+        "foundations"
+      ],
+      "retrieval_query": "How many tasks are in the foundations portfolio?",
+      "retrieved": [
+        {
+          "source": "foundations",
+          "text": "The AI/ML foundations portfolio contains six tasks: Iris exploration, stock forecasting, heart disease classification, general health prompting, mental health support inference, and house price regression. Maintained notebooks open in VS Code. Original submissions are preserved in an archive.",
+          "chunk_index": 0,
+          "similarity": 0.30836616008424783
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "Is the housing paired-image model implemented?",
+      "relevant_sources": [
+        "advanced"
+      ],
+      "retrieval_query": "Is the housing paired-image model implemented?",
+      "retrieved": [
+        {
+          "source": "advanced",
+          "text": "The advanced portfolio contains five tasks: BERT news classification, customer churn, housing regression, a document assistant, and support ticket tagging. Housing currently needs a tabular CSV. The paired-image housing model is not implemented.",
+          "chunk_index": 1,
+          "similarity": 0.4357494572791497
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "What test ROC-AUC did the churn random forest achieve?",
+      "relevant_sources": [
+        "churn"
+      ],
+      "retrieval_query": "What test ROC-AUC did the churn random forest achieve?",
+      "retrieved": [
+        {
+          "source": "churn",
+          "text": "The customer churn experiment uses generated synthetic data with 7043 rows. It selects a model using validation ROC-AUC. The selected random forest achieved test ROC-AUC 0.7186 versus a majority baseline of 0.5000. These results do not measure real customer performance.",
+          "chunk_index": 2,
+          "similarity": 0.447142483419049
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Can I try the YouTube demo without an API key?",
+      "relevant_sources": [
+        "youtube"
+      ],
+      "retrieval_query": "Can I try the YouTube demo without an API key?",
+      "retrieved": [
+        {
+          "source": "youtube",
+          "text": "The YouTube Metadata Explorer has a Django offline demo with fictional examples. The demo needs no API key; live YouTube search requires an owner-provided API key and quota. Its engagement experiment has a 12-row test set. Ridge regression underperformed the median baseline.",
+          "chunk_index": 3,
+          "similarity": 0.49376684294741624
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Does snapshot revert replace current document content?",
+      "relevant_sources": [
+        "java"
+      ],
+      "retrieval_query": "Does snapshot revert replace current document content?",
+      "retrieved": [
+        {
+          "source": "java",
+          "text": "The collaborative editing system is a Java 17 and Spring Boot local REST prototype. User, document, and version APIs require owner access where protected. H2 databases are temporary. A stale document revision returns HTTP 409. Missing revisions return 428. Snapshot revert creates a new snapshot and does not update current document content.",
+          "chunk_index": 4,
+          "similarity": 0.36165228250428
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Which embeddings does the document assistant use?",
+      "relevant_sources": [
+        "assistant"
+      ],
+      "retrieval_query": "Which embeddings does the document assistant use?",
+      "retrieved": [
+        {
+          "source": "assistant",
+          "text": "The document assistant splits documents into overlapping chunks. It uses all-MiniLM-L6-v2 embeddings and FAISS similarity search. Retrieved passages are displayed as sources. FLAN-T5-small generates an unverified answer. The similarity cutoff is a heuristic; source display does not guarantee grounded answers. Previous user questions are concatenated with follow-up questions for retrieval.",
+          "chunk_index": 5,
+          "similarity": 0.21965858372071348
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "previous_question": "Tell me about the customer churn experiment",
+      "question": "Is its data real?",
+      "relevant_sources": [
+        "churn"
+      ],
+      "retrieval_query": "Tell me about the customer churn experiment Is its data real?",
+      "retrieved": [
+        {
+          "source": "churn",
+          "text": "The customer churn experiment uses generated synthetic data with 7043 rows. It selects a model using validation ROC-AUC. The selected random forest achieved test ROC-AUC 0.7186 versus a majority baseline of 0.5000. These results do not measure real customer performance.",
+          "chunk_index": 2,
+          "similarity": 0.29852714218770676
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "previous_question": "Tell me about the YouTube Metadata Explorer",
+      "question": "Did its model beat the baseline?",
+      "relevant_sources": [
+        "youtube"
+      ],
+      "retrieval_query": "Tell me about the YouTube Metadata Explorer Did its model beat the baseline?",
+      "retrieved": [
+        {
+          "source": "youtube",
+          "text": "The YouTube Metadata Explorer has a Django offline demo with fictional examples. The demo needs no API key; live YouTube search requires an owner-provided API key and quota. Its engagement experiment has a 12-row test set. Ridge regression underperformed the median baseline.",
+          "chunk_index": 3,
+          "similarity": 0.3446706494237217
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "What is Manahil's telephone number?",
+      "relevant_sources": [],
+      "retrieval_query": "What is Manahil's telephone number?",
+      "retrieved": []
+    },
+    {
+      "id": "q10",
+      "question": "What is the price of a YouTube API subscription in rupees?",
+      "relevant_sources": [],
+      "retrieval_query": "What is the price of a YouTube API subscription in rupees?",
+      "retrieved": [
+        {
+          "source": "youtube",
+          "text": "The YouTube Metadata Explorer has a Django offline demo with fictional examples. The demo needs no API key; live YouTube search requires an owner-provided API key and quota. Its engagement experiment has a 12-row test set. Ridge regression underperformed the median baseline.",
+          "chunk_index": 3,
+          "similarity": 0.2036828585267044
+        },
+        {
+          "source": "foundations",
+          "text": "The AI/ML foundations portfolio contains six tasks: Iris exploration, stock forecasting, heart disease classification, general health prompting, mental health support inference, and house price regression. Maintained notebooks open in VS Code. Original submissions are preserved in an archive.",
+          "chunk_index": 0,
+          "similarity": 0.1539934887481337
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "What is the deployed document assistant website URL?",
+      "relevant_sources": [],
+      "retrieval_query": "What is the deployed document assistant website URL?",
+      "retrieved": [
+        {
+          "source": "advanced",
+          "text": "The advanced portfolio contains five tasks: BERT news classification, customer churn, housing regression, a document assistant, and support ticket tagging. Housing currently needs a tabular CSV. The paired-image housing model is not implemented.",
+          "chunk_index": 1,
+          "similarity": 0.21917078882403243
+        },
+        {
+          "source": "assistant",
+          "text": "The document assistant splits documents into overlapping chunks. It uses all-MiniLM-L6-v2 embeddings and FAISS similarity search. Retrieved passages are displayed as sources. FLAN-T5-small generates an unverified answer. The similarity cutoff is a heuristic; source display does not guarantee grounded answers. Previous user questions are concatenated with follow-up questions for retrieval.",
+          "chunk_index": 5,
+          "similarity": 0.1659926621609188
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "What was BERT's held-out classification accuracy?",
+      "relevant_sources": [],
+      "retrieval_query": "What was BERT's held-out classification accuracy?",
+      "retrieved": [
+        {
+          "source": "advanced",
+          "text": "The advanced portfolio contains five tasks: BERT news classification, customer churn, housing regression, a document assistant, and support ticket tagging. Housing currently needs a tabular CSV. The paired-image housing model is not implemented.",
+          "chunk_index": 1,
+          "similarity": 0.16615035162951158
+        }
+      ]
+    }
+  ],
+  "limits": "Small authored diagnostic set; no independent test split. Retrieval only, no answer generation. Scores are lexical similarities, not confidence.",
+  "dataset_sha256": "fdb6bb991a9909b1a86ad37d5d8f51042fca93ab8e0163b9a79cdded99eca515",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0"
+  }
+}
