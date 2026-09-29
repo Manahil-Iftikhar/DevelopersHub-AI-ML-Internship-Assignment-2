@@ -26,3 +26,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Reproduce published retrieval evidence
         run: python -m portfolio.retrieval_eval --check
+      - name: Install offline explorer dependencies
+        run: python -m pip install -r requirements-demo.txt
+      - name: Exercise offline explorer without network access
+        run: python tools/check_offline_app.py

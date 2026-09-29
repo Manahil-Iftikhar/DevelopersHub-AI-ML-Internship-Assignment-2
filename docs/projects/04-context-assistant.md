@@ -68,3 +68,9 @@ The CLI writes `reports/retrieval-baseline.json`; use `--output artifacts/retrie
 This is a small, project-authored diagnostic, with obvious vocabulary overlap and no independent train/validation/test split. Perfect ranking here does not establish general retrieval quality. The two follow-ups concatenate an explicitly supplied previous question; they do not test a full multi-turn conversation.
 
 The run executes **TF-IDF only**. It does not execute MiniLM, FAISS, FLAN-T5, the Streamlit UI, or assess answer correctness and grounding. The lexical cutoff of 0.15 is not interchangeable with the app's embedding cutoff of 0.35. No app model or default threshold was changed. A later comparison should freeze an independent question set, run the embedding retriever on the same corpus, and calibrate abstention on separate validation examples.
+
+## Try the offline explorer
+
+[Launch instructions](../SETUP.md#offline-retrieval-explorer) describe a separate Streamlit interface in `offline_app.py`. It reuses the measured lexical baseline and included six-document corpus. A question and optional prior question produce source passages and similarity scores; no answer-generation model is loaded. This makes the known retrieval and abstention limitations directly inspectable.
+
+The interface has automated Streamlit AppTest checks for ordinary/no-match/blank input, follow-up context and fresh-session state, with outbound socket connections blocked. CI runs these separately from the 25 core unit tests. These are in-process interface checks, not browser screenshots or end-to-end model evaluation. The original model-backed `app.py` remains a separate workflow.

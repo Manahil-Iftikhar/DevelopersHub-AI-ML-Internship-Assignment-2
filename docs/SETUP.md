@@ -76,7 +76,22 @@ These results concern generated data only.
 
 Install `requirements-news.txt`, then run the BERT notebook in order. Its default training subset is 10,000 examples, split into 8,000 training and 2,000 validation rows; a separate 2,000-example test subset is used after training. The archive does not contain completed weights or verified test metrics.
 
-## Document assistant
+## Offline retrieval explorer
+
+After creating and activating the environment, install the lightweight demo dependencies:
+
+```bash
+python -m pip install -r requirements-demo.txt
+python -m streamlit run offline_app.py --server.address 127.0.0.1 --browser.gatherUsageStats false
+```
+
+Open the local URL printed in the terminal. Search the six included portfolio documents, inspect matched passages, and optionally enter a previous question to try a follow-up. After installing dependencies, retrieval needs no network access, API key, embedding checkpoint or language-model weights.
+
+This mode performs TF-IDF retrieval only. It does not write answers, and similarity is not confidence that a passage answers the question. The measured baseline retrieved context for three of four unanswerable questions. No personal document upload or external service is involved.
+
+Run its in-process interface checks with `python tools/check_offline_app.py`. These checks block outbound socket connections and cover relevant/no-match/blank questions, follow-ups and fresh-session state. They do not establish browser rendering or deployment readiness.
+
+## Model-backed document assistant
 
 After installing `requirements-llm.txt`:
 
