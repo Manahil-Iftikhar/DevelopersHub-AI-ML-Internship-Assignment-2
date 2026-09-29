@@ -62,3 +62,9 @@ All 19 offline tests passed locally, including three new scoring tests. Core CI 
 Executed `python -m portfolio.retrieval_eval` on six authored corpus documents and 12 prelabelled questions. Source recall and mean reciprocal rank at three were 1.00 on eight answerable cases. Only one of four unanswerable cases abstained; three received context that did not contain their answer. The [case study](projects/04-context-assistant.md#recorded-offline-retrieval-baseline) explains these limits and links all retrieved passages and environment details.
 
 All **22 offline tests** and the repository validator passed locally, including three added tests for source-level scoring, false accepts, follow-up context, abstention, and invalid labels. This baseline does not execute embedding or generation models. Existing model-backed document-assistant execution remains pending.
+
+## Automated retrieval-report verification
+
+Portfolio CI now runs `python -m portfolio.retrieval_eval --check`. It recomputes the lexical baseline and verifies the corpus SHA-256, settings, question labels, ranked sources/passages, similarities and aggregate metrics against the committed report. It does not overwrite that report. Numerical comparisons allow relative tolerance 1e-9 and absolute tolerance 1e-12; historical environment metadata is retained rather than required to match the current runner.
+
+A mismatch fails CI. To intentionally update the experiment, run the CLI without `--check`, inspect changed results and limitations, and commit the dataset/code/report changes together. This gate detects stale evidence; it does not establish retrieval quality or run embedding/generation models.

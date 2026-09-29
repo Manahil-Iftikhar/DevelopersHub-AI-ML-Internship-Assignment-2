@@ -24,3 +24,5 @@ jobs:
         run: python tools/check_workspace.py
       - name: Run focused offline tests
         run: python -m unittest discover -s tests -v
+      - name: Reproduce published retrieval evidence
+        run: python -m portfolio.retrieval_eval --check
