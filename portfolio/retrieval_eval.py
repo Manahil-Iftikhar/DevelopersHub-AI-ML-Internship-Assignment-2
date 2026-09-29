@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
+import math
 from pathlib import Path
 import platform
 
@@ -63,16 +64,49 @@ def evaluate(dataset, k=3, threshold=0.15):
     }
 
 
+def verify_report(recorded, reproduced):
+    """Compare evidence, allowing tiny float drift and different runtime versions."""
+    def compare(expected, actual, path):
+        if isinstance(expected, dict):
+            if not isinstance(actual, dict) or expected.keys() != actual.keys():
+                raise ValueError(f'Report fields differ at {path}')
+            for key in expected:
+                compare(expected[key], actual[key], f'{path}.{key}')
+        elif isinstance(expected, list):
+            if not isinstance(actual, list) or len(expected) != len(actual):
+                raise ValueError(f'Report length differs at {path}')
+            for index, (left, right) in enumerate(zip(expected, actual)):
+                compare(left, right, f'{path}[{index}]')
+        elif isinstance(expected, float):
+            if not isinstance(actual, (float, int)) or not math.isclose(
+                    expected, actual, rel_tol=1e-9, abs_tol=1e-12):
+                raise ValueError(f'Report score differs at {path}')
+        elif expected != actual:
+            raise ValueError(f'Report value differs at {path}')
+    # Preserve historical runtime metadata; it is not a model output.
+    compare({k: v for k, v in recorded.items() if k != 'environment'},
+            {k: v for k, v in reproduced.items() if k != 'environment'}, 'report')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--dataset', type=Path, default=Path('evaluations/retrieval.json'))
     parser.add_argument('--output', type=Path, default=Path('reports/retrieval-baseline.json'))
+    parser.add_argument('--check', action='store_true',
+                        help='Reproduce and verify --output without modifying it')
     args = parser.parse_args()
     raw = args.dataset.read_bytes()
     report = evaluate(json.loads(raw))
     report['dataset_sha256'] = hashlib.sha256(raw).hexdigest()
     report['environment'] = {'python': platform.python_version(), **{
         name: importlib.metadata.version(name) for name in ('numpy', 'scipy', 'scikit-learn')}}
+    if args.check:
+        try:
+            verify_report(json.loads(args.output.read_text(encoding='utf-8')), report)
+        except (ValueError, OSError) as error:
+            parser.exit(1, f'Retrieval report verification failed: {error}\\n')
+        print('PASS: dataset hash, settings, ranked passages, scores and metrics reproduced')
+        return
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report['metrics'], indent=2))
