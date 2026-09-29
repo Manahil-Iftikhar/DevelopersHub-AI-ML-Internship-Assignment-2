@@ -24,19 +24,23 @@ Each project page explains the problem, data, current implementation, recorded e
 | 2 | [Customer churn pipeline](docs/projects/02-churn-pipeline.md) | Reusable preprocessing, model selection, and serialization | Runs offline on explicitly synthetic data |
 | 3 | [Housing: tabular baseline](docs/projects/03-housing-baseline.md) | Ames-style housing regression; multimodal extension pending | CSV required; paired image branch not implemented |
 | 4 | [Document assistant](docs/projects/04-context-assistant.md) | Retrieval, source inspection, and conversation state | Local app included; model-backed execution requires downloads |
-| 5 | [Support ticket tagging](docs/projects/05-ticket-tagging.md) | Zero-shot/few-shot prompts and controlled labels | Prompt/parser checks pass offline; model quality not established |
+| 5 | [Support ticket tagging](docs/projects/05-ticket-tagging.md) | Zero-shot/few-shot prompts and controlled labels | CPU diagnostic run recorded; no improvement over constant baseline |
 
 ## Verification at a glance
 
 - **Hosted checks passed:** [GitHub Actions run 36143914094](https://github.com/Manahil-Iftikhar/DevelopersHub-AI-ML-Internship-Assignment-2/actions/runs/36143914094) verified repository structure, notebook files, local links, original-source integrity, and focused offline tests on September 25, 2026.
 - **Measured experiment:** the synthetic-churn report below records a separate local training and evaluation run.
-- **Scope:** offline CI does not measure BERT, retrieval, or ticket-tagging model quality, and does not validate the missing housing image branch. See the [verification record](docs/VERIFICATION.md) for exact execution limits.
+- **Scope:** offline CI does not measure BERT, retrieval, or ticket-tagging model quality; a separate local ticket-tagging run is linked below, and does not validate the missing housing image branch. See the [verification record](docs/VERIFICATION.md) for exact execution limits.
 
 ## A recorded experiment
 
 ![Synthetic churn held-out test scores compared with a majority baseline](assets/churn-results.svg)
 
 On the seeded **synthetic** dataset, the selected random forest achieved test ROC-AUC **0.7186**, versus **0.5000** for the majority baseline. The model was selected on separate validation data. Read the [experiment record](docs/VERIFICATION.md) and [full metrics](reports/synthetic-churn.json) for the split, environment, and limitations.
+
+## A model-backed diagnostic result
+
+The [ticket-tagging evaluation](docs/projects/05-ticket-tagging.md) ran a pinned FLAN-T5-small checkpoint on 15 declared synthetic tickets. Zero-shot and few-shot each matched **3 of 15** reference answers, no better than a constant-label baseline. Raw outputs, timing, model revision and scoring rules are published. These results expose limitations rather than establish production tagging quality.
 
 ## Working in VS Code
 

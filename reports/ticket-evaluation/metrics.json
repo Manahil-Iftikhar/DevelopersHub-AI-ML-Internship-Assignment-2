@@ -1,0 +1,71 @@
+{
+  "model": {
+    "id": "google/flan-t5-small",
+    "revision": "0fc9ddf78a1e988dac52e2dac162b0ede4fd74ab",
+    "license": "Apache-2.0",
+    "parameter_count": 76961152,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "threads": 2,
+    "load_seconds_including_download_if_needed": 28.483062752000023
+  },
+  "dataset": {
+    "path": "evaluations/tickets.json",
+    "sha256": "0f17409a5a23d1fc9fdec2e503f7154f885d882807ce5f668e8d2a20cf0828ba",
+    "description": "Fifteen synthetic English support tickets authored for this portfolio evaluation before model inference; not real customer data or an independently annotated benchmark.",
+    "annotation_policy": "Assign only the specific issue category. Reserve Technical Issue for application malfunction, not every login or connectivity issue. Use Account Management for requested account/profile changes, Login Problem for authentication, Billing for charges/refunds, Connectivity for connection failures. Labels are project-defined and not uniquely authoritative."
+  },
+  "generation": {
+    "max_new_tokens": 48,
+    "do_sample": false,
+    "seed": 42,
+    "prompt_modes": [
+      "zero_shot",
+      "few_shot"
+    ],
+    "max_input_tokens": 512
+  },
+  "environment": {
+    "torch": "2.8.0+cpu",
+    "transformers": "4.56.1",
+    "tokenizers": "0.22.2",
+    "sentencepiece": "0.2.1",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "0.36.2",
+    "numpy": "2.3.5"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "available_cpu_count": 9
+  },
+  "metrics": {
+    "zero_shot": {
+      "cases": 15,
+      "exact_match": 0.2,
+      "micro_precision": 0.2,
+      "micro_recall": 0.2,
+      "micro_f1": 0.2,
+      "review_rate": 0.0,
+      "median_seconds_per_ticket": 0.10517583299997568
+    },
+    "few_shot": {
+      "cases": 15,
+      "exact_match": 0.2,
+      "micro_precision": 0.1875,
+      "micro_recall": 0.2,
+      "micro_f1": 0.1935483870967742,
+      "review_rate": 0.0,
+      "median_seconds_per_ticket": 0.12827710999999908
+    },
+    "constant_technical_issue_baseline": {
+      "cases": 15,
+      "exact_match": 0.2,
+      "micro_precision": 0.2,
+      "micro_recall": 0.2,
+      "micro_f1": 0.2,
+      "review_rate": 0.0
+    }
+  },
+  "limitations": "Synthetic English diagnostic set with project-authored labels; no independent annotation, real tickets, training or prompt tuning. Existing few-shot examples use overlapping labels, which differ from the specific-category evaluation policy. This protocol mismatch is preserved and must be considered when interpreting mode differences. Timing is one sequential CPU run after warm-up, not a deployment benchmark."
+}

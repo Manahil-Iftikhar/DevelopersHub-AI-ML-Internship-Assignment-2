@@ -1,0 +1,21 @@
+{
+  "description": "Fifteen synthetic English support tickets authored for this portfolio evaluation before model inference; not real customer data or an independently annotated benchmark.",
+  "annotation_policy": "Assign only the specific issue category. Reserve Technical Issue for application malfunction, not every login or connectivity issue. Use Account Management for requested account/profile changes, Login Problem for authentication, Billing for charges/refunds, Connectivity for connection failures. Labels are project-defined and not uniquely authoritative.",
+  "cases": [
+    {"id":"tech-1","text":"The desktop application crashes whenever I open the settings page.","tags":["Technical Issue"]},
+    {"id":"tech-2","text":"Exporting my report produces a blank PDF even though the report contains data.","tags":["Technical Issue"]},
+    {"id":"tech-3","text":"The save button does nothing and my edits disappear after I reload the page.","tags":["Technical Issue"]},
+    {"id":"login-1","text":"My correct password is rejected and I cannot sign in.","tags":["Login Problem"]},
+    {"id":"login-2","text":"The sign-in verification code expires immediately, so I cannot access my account.","tags":["Login Problem"]},
+    {"id":"login-3","text":"After resetting my password, the login page still says invalid credentials.","tags":["Login Problem"]},
+    {"id":"billing-1","text":"My card was charged twice for the same monthly subscription. Please refund the duplicate charge.","tags":["Billing"]},
+    {"id":"billing-2","text":"The invoice shows a higher amount than the price on my subscription plan.","tags":["Billing"]},
+    {"id":"billing-3","text":"I was billed after my subscription ended and would like the payment returned.","tags":["Billing"]},
+    {"id":"account-1","text":"Please change the email address associated with my profile.","tags":["Account Management"]},
+    {"id":"account-2","text":"I want to permanently delete my account and its profile information.","tags":["Account Management"]},
+    {"id":"account-3","text":"How can I update the company name shown in my account profile?","tags":["Account Management"]},
+    {"id":"connect-1","text":"The service disconnects from the network every few minutes while I am working.","tags":["Connectivity"]},
+    {"id":"connect-2","text":"The app says it cannot reach the server, although other websites load normally.","tags":["Connectivity"]},
+    {"id":"connect-3","text":"My session keeps losing its internet connection and reconnecting.","tags":["Connectivity"]}
+  ]
+}
