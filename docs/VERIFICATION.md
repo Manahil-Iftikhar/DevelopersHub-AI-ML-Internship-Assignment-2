@@ -40,7 +40,7 @@ python tools/render_metrics.py
 
 ## Execution limits
 
-The BERT, document-assistant, and ticket-tagging model dependencies and weights were not installed or executed during this maintenance. The Streamlit app and model notebooks were checked for syntax, with offline behavior tests for their reusable utilities. Their full runtime compatibility, output quality, latency, and resource use require model-backed runs. The housing CSV was absent and its image branch is not implemented.
+The initial September 24 maintenance did not install or execute BERT, document-assistant or ticket-tagging model weights. A later ticket-tagging run is recorded below; BERT and document-assistant execution remain pending. The Streamlit app and model notebooks were checked for syntax, with offline behavior tests for their reusable utilities. Their full runtime compatibility, output quality, latency, and resource use require model-backed runs. The housing CSV was absent and its image branch is not implemented.
 
 Historical outputs are documented separately in the project guides.
 
@@ -50,3 +50,9 @@ Historical outputs are documented separately in the project guides.
 
 The [workflow](../.github/workflows/checks.yml) runs `python tools/check_workspace.py` and `python -m unittest discover -s tests -v` on pushes and pull requests. It does not execute the churn training CLI, the complete model-backed notebooks, or the Streamlit application. The local experiment results above are separate evidence, not outputs of this CI run.
 
+
+## Model-backed ticket evaluation · September 29, 2026
+
+Ran the unchanged zero-shot and few-shot prompts on a declared 15-case synthetic diagnostic set using pinned FLAN-T5-small weights on CPU. Both modes scored exact match 0.20, equal to the constant-label baseline. [The case study](projects/05-ticket-tagging.md) links raw outputs, measured runtime, provenance and limitations. No prompt tuning was performed after observing the results.
+
+All 19 offline tests passed locally, including three new scoring tests. Core CI exercises those tests without downloading a model; it does not reproduce the inference run. The interactive ticket notebook uses the pinned model revision but was not executed in this evaluation environment; the measured run used the CLI.

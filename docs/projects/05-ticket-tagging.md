@@ -2,35 +2,56 @@
 
 **Assignment task 5 · Manahil Iftikhar**
 
-Zero-shot/few-shot prompts and controlled labels.
-
 [Maintained notebook](../../notebooks/05-ticket-tagging.ipynb) · [Original submission](../../archive/Task%205_%20Auto%20Tagging%20Support%20Tickets%20Using%20LLM) · [Portfolio](../../README.md)
 
 ## Current state
 
-Prompt/parser checks pass offline; model quality not established.
+A real CPU inference evaluation is recorded for both existing prompt modes. Neither outperformed a constant-label baseline on the declared synthetic diagnostic set. This is a documented experiment, not a reliable automated ticket router.
 
-## Data and model provenance
+## Model and data provenance
 
-Three handcrafted support-ticket examples and five candidate labels; google/flan-t5-small. These examples are a demonstration, not a benchmark dataset.
+Model: [google/flan-t5-small](https://huggingface.co/google/flan-t5-small), revision `0fc9ddf78a1e988dac52e2dac162b0ede4fd74ab`. Its model card lists Apache 2.0 licensing. The runner pins that revision and loads safetensors, with no custom remote model code. Model weights are downloaded explicitly and are not committed.
 
-## Evidence in the original submission
+The [15-case evaluation set](../../evaluations/tickets.json) was authored for this portfolio before inference. It contains fictional English tickets, three per category, with project-defined reference labels. It is not customer data, an independently annotated benchmark or a statistical sample. The dataset SHA-256 and annotation policy are recorded with the results.
 
-The saved original output labels all three examples Login Problem. The original few-shot prompt is defined but never used. No calibrated probabilities or verified top-three ranking are present.
+Reference labels use the specific issue category: application failures, authentication, charges/refunds, profile/account changes or connectivity. The existing few-shot examples sometimes combine a specific category with a broader label. That policy mismatch is preserved and limits any comparison of the two modes. The reference texts differ from the two in-prompt examples, but semantic similarity and possible model pretraining overlap are not controlled.
 
-These statements describe source and saved outputs from the original commit `8fa5cff63746`. They are not fresh benchmark measurements.
+## Protocol
 
-## Improvements and remaining work
+The [evaluation runner](../../portfolio/ticket_eval.py) uses the unchanged prompt builder and strict parser. Both modes use greedy generation, at most 48 new tokens and a 512-token input limit. No evaluation prompt exceeded that input limit. No fine-tuning, prompt search or test-driven prompt revision was performed.
 
-The maintained code actually applies the selected prompting mode, accepts only known labels, removes duplicates, and flags invalid output for human review. Compare prompting modes on a separate labelled dataset before claiming accuracy.
+Exact match requires the complete reference tag set and no parser review flag. Micro precision/recall/F1 score the recognized labels; unknown output is separately reflected by review rate and prevents exact credit. The fixed baseline always emits Technical Issue, chosen before inference. All five categories have equal frequency.
+
+## Recorded CPU run · September 29, 2026
+
+| Method | Exact match | Micro F1 | Parser review rate | Median seconds/ticket |
+| --- | ---: | ---: | ---: | ---: |
+| Constant Technical Issue baseline | 0.2000 | 0.2000 | 0.0000 | Not timed |
+| Zero-shot | 0.2000 | 0.2000 | 0.0000 | 0.1052 |
+| Few-shot | 0.2000 | 0.1935 | 0.0000 | 0.1283 |
+
+[Metrics and environment](../../reports/ticket-evaluation/metrics.json) · [Every raw output and reference label](../../reports/ticket-evaluation/outputs.json)
+
+Zero-shot returned Login Problem for all 15 tickets, matching only the three authentication examples. Few-shot also matched only those three cases; it additionally assigned Account Management to two billing tickets and produced duplicate/extra labels for one technical ticket. The parser removes duplicate recognized labels, which explains the stored normalized output.
+
+**A zero parser-review rate is not evidence of correct classification.** The outputs used allowed vocabulary but were mostly wrong. The next useful step is an agreed label policy, a larger independent evaluation set and a stronger baseline—not routing real tickets with this configuration.
+
+Runtime: 76,961,152 parameters, CPU float32, two PyTorch threads. Model/tokenizer loading including any download took 28.48 seconds in this environment. Per-ticket timing excludes loading and one fixed warm-up; it is one sequential run, not a deployment latency benchmark. No GPU or hosted inference API was used. Full runtime and package versions are recorded in the report.
 
 ## Reproduce
 
-Follow the [VS Code setup](../SETUP.md), open the maintained notebook, and select the installed environment. Supply the data described above where required. The [verification record](../VERIFICATION.md) distinguishes executed checks from workflows requiring external assets.
+Use a separate Python 3.12 virtual environment. From the repository root:
 
-## Questions to answer in the next experiment
+```bash
+python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -r requirements-ticket-eval.txt
+python -m portfolio.ticket_eval --download
+```
 
-- What baseline is the method compared against?
-- Does the evaluation split represent the intended use?
-- Which errors remain, and what evidence explains them?
-- Can another person reproduce the result from the documented data and settings?
+After the model is cached, omit `--download` to prohibit model downloads. Reports default to `artifacts/ticket-evaluation/`; choose another directory with `--output`. Timing will vary by machine. The notebook provides interactive demonstration inputs using the same pinned checkpoint; the measured 15-case result is generated by the CLI.
+
+Core CI runs 19 offline tests, including three evaluation-scoring tests. It does not install model weights or repeat real inference. The measured outputs above come from a separate local run.
+
+## Original internship evidence
+
+The archive contains three handcrafted examples whose saved outputs were all Login Problem. Its few-shot prompt was defined but not used. The maintained implementation applies the selected mode, filters unknown tags and preserves raw output. No generated tag order is a calibrated probability ranking. Historical source commit: `8fa5cff63746`.
