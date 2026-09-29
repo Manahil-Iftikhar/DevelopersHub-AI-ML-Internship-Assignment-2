@@ -12,6 +12,8 @@ A collection of 5 projects originating from my 2025 DevelopersHub Corporation in
 
 ## Start here
 
+Try the [offline retrieval explorer](docs/SETUP.md#offline-retrieval-explorer) to inspect source passages locally without model downloads or an API key.
+
 Open [the synthetic churn pipeline](notebooks/02-churn-pipeline.ipynb) for a complete local training example that requires no external dataset.
 
 Each project page explains the problem, data, current implementation, recorded evidence, and next experiment. Original assignment titles are preserved for traceability; the descriptions reflect what the code currently does.
