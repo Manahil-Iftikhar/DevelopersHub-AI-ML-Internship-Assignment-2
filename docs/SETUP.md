@@ -91,6 +91,18 @@ This mode performs TF-IDF retrieval only. It does not write answers, and similar
 
 Run its in-process interface checks with `python tools/check_offline_app.py`. These checks block outbound socket connections and cover relevant/no-match/blank questions, follow-ups and fresh-session state. They do not establish browser rendering or deployment readiness.
 
+### Launch from VS Code
+
+1. Open the repository folder in VS Code and install the recommended Python and Python Debugger extensions.
+2. Use **Python: Select Interpreter** in the Command Palette to select the project's `.venv`. Install `requirements-demo.txt` in that environment using the command above.
+3. Open **Run and Debug**, select **Offline retrieval explorer**, and press **F5**. The committed [launch configuration](../.vscode/launch.json) runs Streamlit with your selected interpreter.
+4. Open the local URL printed in the integrated terminal. Set a breakpoint in `offline_app.py` or `portfolio/retrieval_eval.py`, then submit a question to inspect retrieval.
+5. Use the debugger's stop button when finished.
+
+The launcher binds to `127.0.0.1`, disables usage telemetry, and disables automatic reruns on file save to keep debugging predictable. It does not install dependencies automatically. If Streamlit cannot be imported, check the selected interpreter and install the demo requirements there. If the default port is occupied, stop the previous app process before restarting.
+
+The configuration follows the [official Python debugging guide](https://code.visualstudio.com/docs/python/debugging). Its JSON and repository paths were checked; an interactive VS Code debugging session was not exercised in the maintenance environment.
+
 ## Model-backed document assistant
 
 After installing `requirements-llm.txt`:
