@@ -1,0 +1,353 @@
+{
+  "dataset": {
+    "kind": "synthetic",
+    "generation_seed": 42,
+    "csv_sha256": "4804d8b51434d1d04122e6464924f3a9ee1312028affe6904fedb3215165800b"
+  },
+  "split_seed": 42,
+  "rows": {
+    "train": 4225,
+    "validation": 1409,
+    "test": 1409
+  },
+  "model": "RandomForestClassifier(n_estimators=100, min_samples_leaf=2, random_state=42, n_jobs=1)",
+  "model_choice": "Fixed from the previously published seed-42 model-selection result; no new model search.",
+  "protocol": "Fit training rows only; maximize validation F1 over predeclared grid; freeze model without refitting; compare both thresholds on identical test probabilities.",
+  "tie_rule": "Closest to 0.5, then lower threshold",
+  "validation_grid": [
+    {
+      "threshold": 0.1,
+      "accuracy": 0.45635202271114267,
+      "precision": 0.45590327169274536,
+      "recall": 0.9984423676012462,
+      "f1": 0.6259765625,
+      "confusion_matrix": [
+        [
+          2,
+          765
+        ],
+        [
+          1,
+          641
+        ]
+      ]
+    },
+    {
+      "threshold": 0.15,
+      "accuracy": 0.4691270404542229,
+      "precision": 0.46153846153846156,
+      "recall": 0.9906542056074766,
+      "f1": 0.6297029702970297,
+      "confusion_matrix": [
+        [
+          25,
+          742
+        ],
+        [
+          6,
+          636
+        ]
+      ]
+    },
+    {
+      "threshold": 0.2,
+      "accuracy": 0.5010645848119234,
+      "precision": 0.4768060836501901,
+      "recall": 0.9766355140186916,
+      "f1": 0.6407766990291263,
+      "confusion_matrix": [
+        [
+          79,
+          688
+        ],
+        [
+          15,
+          627
+        ]
+      ]
+    },
+    {
+      "threshold": 0.25,
+      "accuracy": 0.5436479772888574,
+      "precision": 0.4995871180842279,
+      "recall": 0.942367601246106,
+      "f1": 0.652995143011333,
+      "confusion_matrix": [
+        [
+          161,
+          606
+        ],
+        [
+          37,
+          605
+        ]
+      ]
+    },
+    {
+      "threshold": 0.3,
+      "accuracy": 0.5933286018452804,
+      "precision": 0.5316223648029331,
+      "recall": 0.9034267912772586,
+      "f1": 0.6693594922100404,
+      "confusion_matrix": [
+        [
+          256,
+          511
+        ],
+        [
+          62,
+          580
+        ]
+      ]
+    },
+    {
+      "threshold": 0.35,
+      "accuracy": 0.631653655074521,
+      "precision": 0.5642633228840125,
+      "recall": 0.8411214953271028,
+      "f1": 0.6754221388367729,
+      "confusion_matrix": [
+        [
+          350,
+          417
+        ],
+        [
+          102,
+          540
+        ]
+      ]
+    },
+    {
+      "threshold": 0.4,
+      "accuracy": 0.6501064584811923,
+      "precision": 0.5900846432889963,
+      "recall": 0.7601246105919003,
+      "f1": 0.6643975493533015,
+      "confusion_matrix": [
+        [
+          428,
+          339
+        ],
+        [
+          154,
+          488
+        ]
+      ]
+    },
+    {
+      "threshold": 0.45,
+      "accuracy": 0.6657203690560681,
+      "precision": 0.6233766233766234,
+      "recall": 0.6728971962616822,
+      "f1": 0.647191011235955,
+      "confusion_matrix": [
+        [
+          506,
+          261
+        ],
+        [
+          210,
+          432
+        ]
+      ]
+    },
+    {
+      "threshold": 0.5,
+      "accuracy": 0.6628814762242725,
+      "precision": 0.6483126110124334,
+      "recall": 0.5685358255451713,
+      "f1": 0.6058091286307054,
+      "confusion_matrix": [
+        [
+          569,
+          198
+        ],
+        [
+          277,
+          365
+        ]
+      ]
+    },
+    {
+      "threshold": 0.55,
+      "accuracy": 0.6508161816891412,
+      "precision": 0.669683257918552,
+      "recall": 0.46105919003115264,
+      "f1": 0.5461254612546126,
+      "confusion_matrix": [
+        [
+          621,
+          146
+        ],
+        [
+          346,
+          296
+        ]
+      ]
+    },
+    {
+      "threshold": 0.6,
+      "accuracy": 0.6458481192334989,
+      "precision": 0.729903536977492,
+      "recall": 0.35358255451713394,
+      "f1": 0.47639034627492133,
+      "confusion_matrix": [
+        [
+          683,
+          84
+        ],
+        [
+          415,
+          227
+        ]
+      ]
+    },
+    {
+      "threshold": 0.65,
+      "accuracy": 0.6139105748757985,
+      "precision": 0.7378640776699029,
+      "recall": 0.2367601246105919,
+      "f1": 0.3584905660377358,
+      "confusion_matrix": [
+        [
+          713,
+          54
+        ],
+        [
+          490,
+          152
+        ]
+      ]
+    },
+    {
+      "threshold": 0.7,
+      "accuracy": 0.5841022001419447,
+      "precision": 0.7916666666666666,
+      "recall": 0.11838006230529595,
+      "f1": 0.20596205962059622,
+      "confusion_matrix": [
+        [
+          747,
+          20
+        ],
+        [
+          566,
+          76
+        ]
+      ]
+    },
+    {
+      "threshold": 0.75,
+      "accuracy": 0.5621007806955287,
+      "precision": 0.8787878787878788,
+      "recall": 0.045171339563862926,
+      "f1": 0.08592592592592592,
+      "confusion_matrix": [
+        [
+          763,
+          4
+        ],
+        [
+          613,
+          29
+        ]
+      ]
+    },
+    {
+      "threshold": 0.8,
+      "accuracy": 0.5471965933286018,
+      "precision": 1.0,
+      "recall": 0.006230529595015576,
+      "f1": 0.01238390092879257,
+      "confusion_matrix": [
+        [
+          767,
+          0
+        ],
+        [
+          638,
+          4
+        ]
+      ]
+    },
+    {
+      "threshold": 0.85,
+      "accuracy": 0.5443577004968062,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "confusion_matrix": [
+        [
+          767,
+          0
+        ],
+        [
+          642,
+          0
+        ]
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "accuracy": 0.5443577004968062,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "confusion_matrix": [
+        [
+          767,
+          0
+        ],
+        [
+          642,
+          0
+        ]
+      ]
+    }
+  ],
+  "chosen_threshold": 0.35,
+  "test": {
+    "default": {
+      "threshold": 0.5,
+      "accuracy": 0.673527324343506,
+      "precision": 0.6590909090909091,
+      "recall": 0.5872274143302181,
+      "f1": 0.6210873146622735,
+      "confusion_matrix": [
+        [
+          572,
+          195
+        ],
+        [
+          265,
+          377
+        ]
+      ]
+    },
+    "validation_selected": {
+      "threshold": 0.35,
+      "accuracy": 0.6124911284599006,
+      "precision": 0.5501043841336117,
+      "recall": 0.8208722741433022,
+      "f1": 0.65875,
+      "confusion_matrix": [
+        [
+          336,
+          431
+        ],
+        [
+          115,
+          527
+        ]
+      ]
+    },
+    "roc_auc": 0.7192920997372129
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0"
+  },
+  "limitations": "Exploratory reuse of previously inspected synthetic holdouts, not fresh confirmatory evidence. F1 is not a business cost function. No refit, so scores differ from the earlier train-plus-validation model. No calibration or real-customer claim."
+}
