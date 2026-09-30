@@ -72,3 +72,32 @@ The runner regenerates the fixed data, records its CSV hash and environment, and
 ### Limits
 
 The five test sets overlap and come from one synthetic dataset. These results are correlated; the reported sample standard deviation is descriptive, **not a confidence interval**. They do not measure robustness to a new population, external customers, altered generation assumptions, or future time periods. Future tuning needs fresh held-out evidence; these five results should not become a test set repeatedly optimized against. CI checks source and existing tests, but does not rerun this training study.
+
+## Exploratory threshold study · September 2026
+
+This follow-up asks how changing the decision cutoff affects missed churn cases and false alarms. It reuses the previously inspected seed-42 synthetic splits, so it is **exploratory, not fresh confirmatory evidence**.
+
+The random forest configuration is fixed from the earlier seed-42 selection. It fits only the 4,225 training rows. A predeclared grid from 0.10 through 0.90 in steps of 0.05 maximizes F1 on the 1,409 validation rows; ties prefer the value closest to 0.50, then the lower value. Validation chooses **0.35**. The model is not refitted after selecting the cutoff, and both decisions use identical probabilities on the 1,409 test rows.
+
+| Test result | Default cutoff 0.50 | Validation-selected cutoff 0.35 |
+| --- | ---: | ---: |
+| Precision | 0.6591 | 0.5501 |
+| Recall | 0.5872 | 0.8209 |
+| F1 | 0.6211 | 0.6588 |
+| Accuracy | 0.6735 | 0.6125 |
+| Missed churn cases | 265 | 115 |
+| False alarms | 195 | 431 |
+
+The lower cutoff catches 150 additional churn cases but produces 236 additional false alarms. F1 rises while precision and accuracy fall. F1 is not a business cost function, so these results do not establish the best operational decision.
+
+ROC-AUC is **0.7193** for the same probability ranking under both cutoffs. It does not change when only the classification threshold changes. This training-only model differs from the earlier model refitted on training plus validation; its default-cutoff result should not be mistaken for a revision of that earlier report.
+
+[Full metrics and validation grid](../../reports/churn-threshold/metrics.json) · [Validation predictions](../../reports/churn-threshold/validation-predictions.csv) · [Test predictions](../../reports/churn-threshold/test-predictions.csv)
+
+### Reproduce
+
+```bash
+python -m portfolio.churn_threshold --output artifacts/churn-threshold
+```
+
+Use the core requirements. The runner exports the fixed-data hash, environment, full validation grid, and both prediction sets. Threshold choice uses only validation labels; the test labels are used to measure the two frozen decisions. The dataset and split have been inspected in previous experiments, and the model family was selected in that earlier work. A future decision policy requires fresh data, explicit error costs and separate confirmation. No probability calibration, real-customer benefit or deployment readiness is claimed.

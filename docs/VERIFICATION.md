@@ -74,3 +74,9 @@ A mismatch fails CI. To intentionally update the experiment, run the CLI without
 Executed five complete training/validation/test runs with predeclared seeds 7, 21, 42, 84 and 123 on the same seed-42 synthetic dataset. [The case study](projects/02-churn-pipeline.md#five-seed-sensitivity-study--2026-09-29) records every selected model and score. Mean test ROC-AUC was 0.7352 (sample standard deviation 0.0114); baseline ROC-AUC was 0.5000 in each run.
 
 Independently recalculated AUC, accuracy and F1 from all 7,045 exported prediction rows and matched the recorded per-run metrics. Each run contains 1,409 unique test row indices; rows can recur across seeds. Source implementations of the generator and training pipeline matched the repository revision used for this study. This is a separate local experiment; hosted CI does not retrain it.
+
+## Exploratory churn threshold study · published September 30, 2026
+
+The local run completed on September 29 with the fixed synthetic seed-42 split. Validation F1 selected cutoff 0.35 from the predeclared grid. Compared with 0.50 on the same frozen model, test F1 changed from 0.6211 to 0.6588; missed positives fell from 265 to 115 while false positives rose from 195 to 431. [The case study](projects/02-churn-pipeline.md#exploratory-threshold-study--september-2026) documents the reused-holdout limitation and absence of a model refit.
+
+On September 30, all **27 offline tests** passed, including threshold-selection and tie/boundary checks. Independently recalculated the selected cutoff from exported validation probabilities and both test confusion matrices, F1, precision, recall and accuracy from exported test probabilities. Validation/test row IDs are disjoint. The experiment is a separate local training run; CI tests the utilities and does not retrain it.
