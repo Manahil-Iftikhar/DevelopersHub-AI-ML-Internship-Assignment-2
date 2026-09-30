@@ -21,7 +21,7 @@
     "task": 3,
     "title": "Housing: tabular baseline",
     "assignment_title": "Multimodal ML – Housing Price Prediction Using Images + Tabular Data",
-    "status": "CSV required; paired image branch not implemented",
+    "status": "California Housing case study measured; original CSV and paired images still absent",
     "notebook": "notebooks/03-housing-baseline.ipynb",
     "case_study": "docs/projects/03-housing-baseline.md",
     "original": "archive/Task 3_ Multimodal ML – Housing Price Prediction Using Images + Tabular Data"

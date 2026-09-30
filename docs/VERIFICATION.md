@@ -80,3 +80,9 @@ Independently recalculated AUC, accuracy and F1 from all 7,045 exported predicti
 The local run completed on September 29 with the fixed synthetic seed-42 split. Validation F1 selected cutoff 0.35 from the predeclared grid. Compared with 0.50 on the same frozen model, test F1 changed from 0.6211 to 0.6588; missed positives fell from 265 to 115 while false positives rose from 195 to 431. [The case study](projects/02-churn-pipeline.md#exploratory-threshold-study--september-2026) documents the reused-holdout limitation and absence of a model refit.
 
 On September 30, all **27 offline tests** passed, including threshold-selection and tie/boundary checks. Independently recalculated the selected cutoff from exported validation probabilities and both test confusion matrices, F1, precision, recall and accuracy from exported test probabilities. Validation/test row IDs are disjoint. The experiment is a separate local training run; CI tests the utilities and does not retrain it.
+
+## California Housing regression · September 30, 2026
+
+Executed the separate public-data CLI with scikit-learn 1.8.0. Validation RMSE selected random forest. Test MAE was 0.3264 and RMSE 0.5044 in $100,000 target units, versus 0.8740 and 1.1731 for the median baseline; test R² was 0.8059. [The case study](projects/03-housing-baseline.md#separate-california-housing-case-study--september-30-2026) documents provenance, the random split, target ceiling and historical block-group interpretation.
+
+All **29 offline tests** passed locally. Independently verified the loaded-table hash, all 4,128 test row IDs/targets and model/baseline MAE, RMSE and R² from exported predictions and the development-set median. The original housing notebook and image branch remain unexecuted/unimplemented respectively. CI checks data-validation fixtures without downloading this dataset or rerunning training.

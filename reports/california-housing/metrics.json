@@ -1,0 +1,72 @@
+{
+  "task": "regression",
+  "target": "MedHouseVal",
+  "seed": 42,
+  "rows": {
+    "train": 12384,
+    "validation": 4128,
+    "test": 4128
+  },
+  "rows_removed_before_split": 0,
+  "selection_metric": "rmse",
+  "selected_on": "validation",
+  "selected_model": "random_forest",
+  "validation": {
+    "baseline": {
+      "mae": 0.8972483212209302,
+      "rmse": 1.2060920804066924,
+      "r2": -0.05938458872144481
+    },
+    "ridge": {
+      "mae": 0.5333291962768499,
+      "rmse": 0.7278301955795905,
+      "r2": 0.6142083196462856
+    },
+    "random_forest": {
+      "mae": 0.3341853561932256,
+      "rmse": 0.5097825154501797,
+      "r2": 0.8107383634382146
+    }
+  },
+  "test": {
+    "selected_model": {
+      "mae": 0.32641849483485685,
+      "rmse": 0.5043763830932517,
+      "r2": 0.8058655427073366
+    },
+    "baseline": {
+      "mae": 0.8740399224806202,
+      "rmse": 1.1731167105035603,
+      "r2": -0.050208628996205595
+    }
+  },
+  "feature_columns": [
+    "MedInc",
+    "HouseAge",
+    "AveRooms",
+    "AveBedrms",
+    "Population",
+    "AveOccup",
+    "Latitude",
+    "Longitude"
+  ],
+  "limitations": "Historical 1990 census block groups, not individual listings or current prices. Random holdouts may share nearby locations and do not test geographic or temporal generalization. Target ceiling affects high-value error interpretation. No paired images or multimodal model.",
+  "dataset": {
+    "name": "California Housing",
+    "kind": "external",
+    "source_url": "https://ndownloader.figshare.com/files/5976036",
+    "loader": "sklearn.datasets.fetch_california_housing",
+    "source_archive_sha256": "aaa5c9a6afe2225cc2aed2723682ae403280c4a3695a2ddda4ffb5d8215ea681",
+    "canonical_csv_sha256": "94ef369b909f5c725340b512b7c9a05c1550a554b6592d29303990e3ba521a1f",
+    "target_units": "100000 USD; census block-group median house value",
+    "target_max": 5.00001,
+    "rows_at_target_max": 965
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3"
+  }
+}
