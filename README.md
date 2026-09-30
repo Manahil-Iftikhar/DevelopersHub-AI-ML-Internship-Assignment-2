@@ -24,7 +24,7 @@ Each project page explains the problem, data, current implementation, recorded e
 | --- | --- | --- | --- |
 | 1 | [BERT news classification](docs/projects/01-bert-news.md) | Transformer training, text classification, and evaluation | Training code present; completed evaluation not in the archive |
 | 2 | [Customer churn pipeline](docs/projects/02-churn-pipeline.md) | Reusable preprocessing, model selection, and serialization | Runs offline on explicitly synthetic data |
-| 3 | [Housing: tabular baseline](docs/projects/03-housing-baseline.md) | Ames-style housing regression; multimodal extension pending | CSV required; paired image branch not implemented |
+| 3 | [Housing: tabular baseline](docs/projects/03-housing-baseline.md) | Ames-style housing regression; multimodal extension pending | California Housing case study measured; original CSV and paired images still absent |
 | 4 | [Document assistant](docs/projects/04-context-assistant.md) | Retrieval, source inspection, and conversation state | Offline retrieval baseline recorded; embedding and generation evaluation pending |
 | 5 | [Support ticket tagging](docs/projects/05-ticket-tagging.md) | Zero-shot/few-shot prompts and controlled labels | CPU diagnostic run recorded; no improvement over constant baseline |
 
